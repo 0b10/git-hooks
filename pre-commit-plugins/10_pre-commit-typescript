@@ -1,0 +1,12 @@
+#!/bin/bash
+# A pre-commit hook for Typescript
+
+echo ":: Running the Typescript compiler...";
+
+tsc
+if [[ $? != 0 ]]; then
+  echo ":: Typescript failed to compile, aborting commit";
+  exit 1;
+fi
+
+echo ":: Typescript compiled successfully";

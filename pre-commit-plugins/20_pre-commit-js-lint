@@ -1,0 +1,16 @@
+#!/bin/bash
+# A pre-commit hook for JS linting, using npm scripts
+
+command -v yarn > /dev/null
+[[ $? == 0 ]] && pm="yarn" || pm="npm";
+
+echo ":: Running JS linter with ${pm}...";
+
+$pm run lint;
+
+if [[ $? != 0 ]]; then
+  echo ":: Linting failed, aborting commit";
+  exit 1;
+fi
+
+echo ":: Linting finished successfully";

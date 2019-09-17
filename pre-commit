@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dir_prefix=`dirname $0`
+dir="${dir_prefix}/pre-commit-plugins"
+
+echo ":: Running pre-commit hooks..."
+
+for plugin in `ls ${dir} | sort`; do
+  source "${dir}/$plugin";
+done
+
+echo ":: All pre-commit hooks finished successfully"
